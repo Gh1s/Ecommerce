@@ -1,0 +1,48 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 400px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.image-diamond {
+  margin-top: 50px;
+  margin-left: 45%;
+  margin-right: 45%;
+  height: 50px;
+  width: 50px;
+}
+
+.mat-nav-list {
+  margin-top: 50px;
+  width: 100%;
+  justify-content: center;
+}
+
+.product-list{
+  margin-top: 30%;
+}
+
+.grid-list{
+  margin: 0 50px 0 50px;
+}
+
+.button-icon{
+  background-color: #FEDBD0;
+  margin-top: 100px;
+  margin-left: 78%;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px 0 0 15px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  float: right;
+  z-index: 7;
+}

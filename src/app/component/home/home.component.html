@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container" (backdropClick)="close('backdrop')">
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" class="sidenav" disableClose style="background-color: #FEDBD0">
+    <img class="image-diamond" alt="diamond" src="../../../assets/images/diamond.png">
+    <h1 style="font-family: Arial; margin-left: 20%; margin-top: 20px;
+      letter-spacing: 2px; margin-left: 37.5%; margin-right: 45%">
+      SHRINE
+    </h1>
+    <!--mat-toolbar>Menu</mat-toolbar-->
+    <mat-nav-list>
+      <a mat-list-item style="margin-left: 42%">Tout</a>
+      <a mat-list-item style="margin-left: 36%">Accessoires</a>
+      <a mat-list-item style="margin-left: 37%">Vêtements</a>
+      <a mat-list-item style="margin-left: 40%">Maison</a>
+      <a mat-list-item style="margin-left: 33%">Se Déconnecter</a>
+      <!--a mat-list-item href="#">Robes</a-->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-icon-button (click)="sidenav.open()" style="margin-left: 10px; margin-top: 10px; color: black">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-icon-button class="button-icon" aria-label="Example icon-button with menu icon"
+            type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="openShoppingCart()">
+      <mat-icon style="color: black">shopping_cart</mat-icon>
+    </button>
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="isOpen"
+    >
+      <app-shopping-cart></app-shopping-cart>
+    </ng-template>
+    <mat-grid-list class="grid-list" cols="4">
+      <mat-grid-tile *ngFor="let product of PRODUCTS">
+        <app-product-list class="product-list" [product]="product" (click)="addToCart(product)"></app-product-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
