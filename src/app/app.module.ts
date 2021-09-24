@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { ShoppingCartComponent } from './component/shopping-cart/shopping-cart.component';
 import { ProductListComponent } from './component/product-list/product-list.component';
@@ -20,6 +20,7 @@ import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {OverlayModule} from "@angular/cdk/overlay";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -46,8 +47,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     OverlayModule,
     MatButtonModule,
     MatDialogModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

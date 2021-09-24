@@ -1,7 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {CartService} from "../../service/cart.service";
-import { OverlayModule } from "@angular/cdk/overlay";
+import {Overlay, OverlayModule} from "@angular/cdk/overlay";
+import {Location} from "@angular/common";
+import {Product} from "../../product";
+import {ProductsService} from "../../service/products.service";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,14 +12,12 @@ import { OverlayModule } from "@angular/cdk/overlay";
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  @Output('cdkConnectedOverlayDisableClose') disableClose = false;
-  overlayModule: OverlayModule | undefined ;
 
   constructor(private router: Router,
-              private cartService: CartService) { }
+              private cartService: CartService,
+              private productService: ProductsService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   items = this.cartService.getItems();
 
@@ -24,11 +25,8 @@ export class ShoppingCartComponent implements OnInit {
     return this.items.map(item => item.price).reduce((acc, value) => acc + value, 0);
   }
 
-  closeShoppingCart(status: boolean) {
-
+  deleteItems(id: number) {
+    return this.cartService.removeItem(id);
   }
 
-  onClickedOutside(e: Event) {
-    console.log("clicked outside", e);
-  }
 }

@@ -1,10 +1,12 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Observable} from "rxjs";
+import {merge, Observable} from "rxjs";
 import {Breakpoints, BreakpointObserver} from "@angular/cdk/layout";
-import {map, shareReplay} from "rxjs/operators";
+import {filter, map, mapTo, shareReplay} from "rxjs/operators";
 import {Product, PRODUCTS} from "../../product";
 import {CartService} from "../../service/cart.service";
 import {MatSidenav} from "@angular/material/sidenav";
+import {ProductsService} from "../../service/products.service";
+import {SnackbarService} from "../../service/snackbar.service";
 
 @Component({
   selector: 'app-home',
@@ -18,11 +20,13 @@ export class HomeComponent implements OnInit {
   PRODUCTS: Product[] = [];
   reason = '';
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,
+              private productService: ProductsService,
+              private snackbarService: SnackbarService) {
   }
 
   ngOnInit(): void {
-    this.PRODUCTS = PRODUCTS;
+    this.getProducts();
   }
 
   close(reason: string) {
@@ -33,11 +37,19 @@ export class HomeComponent implements OnInit {
 
   addToCart(product: Product) {
     this.cartService.addToCart(product);
-    window.alert("Your product has been added to the cart!");
+    this.snackbarService.openSnackBar('Your product has been added to the cart!', 'fermer');
   }
 
-  openShoppingCart() {
-    this.isOpen = this.cartService.openShoppingCart();
+  addProduct(product: Product): void {
+    this.productService.addProduct(product)
+      .subscribe(product => {
+        this.PRODUCTS.push(product);
+      });
+  }
+
+  getProducts(): void {
+    this.productService.getProducts()
+      .subscribe(products => this.PRODUCTS = products);
   }
 
 }

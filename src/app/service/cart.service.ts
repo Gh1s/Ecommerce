@@ -6,7 +6,6 @@ import {Product} from "../product";
 })
 export class CartService {
   items: Product[] = [];
-  isOpen: boolean | undefined;
 
   constructor() { }
 
@@ -23,14 +22,10 @@ export class CartService {
     return this.items;
   }
 
-  openShoppingCart() {
-    this.isOpen = true;
-    return this.isOpen;
-  }
-
-  closeShoppingCart() {
-    this.isOpen = false
-    return this.isOpen;
+  removeItem(id: number) {
+    this.items.splice(id, 1);
+    //return this.items;
+    //return this.items;
   }
 
 }

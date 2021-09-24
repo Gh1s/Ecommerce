@@ -20,11 +20,13 @@
       <mat-icon>menu</mat-icon>
     </button>
     <button mat-icon-button class="button-icon" aria-label="Example icon-button with menu icon"
-            type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="openShoppingCart()">
+            type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="isOpen = !isOpen">
       <mat-icon style="color: black">shopping_cart</mat-icon>
     </button>
     <ng-template
+      cdkConnectedOverlayHasBackdrop
       cdkConnectedOverlay
+      (backdropClick)="isOpen = false"
       [cdkConnectedOverlayOrigin]="trigger"
       [cdkConnectedOverlayOpen]="isOpen"
     >
@@ -32,7 +34,9 @@
     </ng-template>
     <mat-grid-list class="grid-list" cols="4">
       <mat-grid-tile *ngFor="let product of PRODUCTS">
-        <app-product-list class="product-list" [product]="product" (click)="addToCart(product)"></app-product-list>
+        <a routerLink="/products/{{product.id}}">
+          <app-product-list class="product-list" [product]="product"></app-product-list>
+        </a>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-sidenav-content>
