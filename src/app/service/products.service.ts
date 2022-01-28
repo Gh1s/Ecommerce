@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {Product} from "../product";
-import {catchError, map, tap} from "rxjs/operators";
+import {catchError, filter, map, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'

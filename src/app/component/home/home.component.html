@@ -6,17 +6,19 @@
       SHRINE
     </h1>
     <!--mat-toolbar>Menu</mat-toolbar-->
-    <mat-nav-list>
-      <a mat-list-item style="margin-left: 42%">Tout</a>
-      <a mat-list-item style="margin-left: 36%">Accessoires</a>
-      <a mat-list-item style="margin-left: 37%">Vêtements</a>
-      <a mat-list-item style="margin-left: 40%">Maison</a>
-      <a mat-list-item style="margin-left: 33%">Se Déconnecter</a>
+    <mat-nav-list class="nav-list">
+      <a mat-list-item style="padding-left: 43%; padding-right: 41%" (click)="getProducts()">Tout</a>
+      <a mat-list-item style="padding-left: 36%; padding-right: 34%" (click)="getAccessories()">Accessoires</a>
+      <a mat-list-item style="padding-left: 37%; padding-right: 35%" (click)="getClothing()">Vêtements</a>
+      <a mat-list-item style="padding-left: 40%; padding-right: 38%" (click)="getHousing()">Maison</a>
+      <a mat-list-item style="padding-left: 31%; padding-right: 29%" (click)="createAccount()">Créer un compte</a>
+      <a mat-list-item style="padding-left: 33%">Se Déconnecter</a>
       <!--a mat-list-item href="#">Robes</a-->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button mat-icon-button (click)="sidenav.open()" style="margin-left: 10px; margin-top: 10px; color: black">
+    <button mat-icon-button class="menu-icon" (click)="sidenav.open()"
+            style="margin-left: 10px; margin-top: 10px; color: black; position: -webkit-sticky; top: 0; z-index: 7">
       <mat-icon>menu</mat-icon>
     </button>
     <button mat-icon-button class="button-icon" aria-label="Example icon-button with menu icon"
@@ -32,7 +34,7 @@
     >
       <app-shopping-cart></app-shopping-cart>
     </ng-template>
-    <mat-grid-list class="grid-list" cols="4">
+    <mat-grid-list class="grid-list" #grid [cols]="cols" style="margin-top: 50px">
       <mat-grid-tile *ngFor="let product of PRODUCTS">
         <a routerLink="/products/{{product.id}}">
           <app-product-list class="product-list" [product]="product"></app-product-list>

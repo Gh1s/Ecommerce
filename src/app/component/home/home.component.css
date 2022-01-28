@@ -1,9 +1,12 @@
 .sidenav-container {
   height: 100%;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 .sidenav {
-  width: 400px;
+  width: 30%;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -25,12 +28,8 @@
   justify-content: center;
 }
 
-.product-list{
-  margin-top: 30%;
-}
-
 .grid-list{
-  margin: 0 50px 0 50px;
+  #margin: 0 50px 0 50px;
   height: 100%;
 }
 
@@ -48,6 +47,15 @@
   z-index: 7;
 }
 
+.menu-icon{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  float: left;
+  z-index: 7;
+}
+
 mat-sidenav-content {
   height: 100%;
+  width: 100%;
 }

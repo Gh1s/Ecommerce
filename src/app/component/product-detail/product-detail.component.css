@@ -1,0 +1,15 @@
+.star-gold {
+  color: orange
+}
+
+.star-rating-animation:hover .star-hover {
+  color: orange
+}
+
+.star-rating-animation .star-hover:hover ~ .star-hover {
+  color: #ddd
+}
+
+.star-rating-animation .star-hover:hover {
+  transform: scale(1.3)
+}

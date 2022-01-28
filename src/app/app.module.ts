@@ -20,8 +20,18 @@ import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {OverlayModule} from "@angular/cdk/overlay";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
-import {MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition} from "@angular/material/snack-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import { FormLayoutComponent } from './component/form-layout/form-layout.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatRippleModule} from "@angular/material/core";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
+
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +40,8 @@ import {MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition}
     ProductDetailComponent,
     ProductQuickviewComponent,
     SignInComponent,
-    HomeComponent
+    HomeComponent,
+    FormLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,8 +59,17 @@ import {MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition}
     MatButtonModule,
     MatDialogModule,
     HttpClientModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatRippleModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
-  providers: [MatSnackBar],
+  providers: [
+    MatSnackBar,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,8 +24,6 @@ export class CartService {
 
   removeItem(id: number) {
     this.items.splice(id, 1);
-    //return this.items;
-    //return this.items;
   }
 
 }
